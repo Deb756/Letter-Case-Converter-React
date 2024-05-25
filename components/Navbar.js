@@ -1,6 +1,6 @@
-import React from 'react'
+import React from "react";
 // here we have to import proptypes to use props
-import PropTypes from 'prop-types'
+import PropTypes from "prop-types";
 // rfc for React function baased component
 export default function Navbar(props) {
   return (
@@ -10,8 +10,7 @@ export default function Navbar(props) {
         data-bs-theme="dark"
       >
         <div className="container-fluid">
-
-            {/* here i passed the (props) from app.js */}
+          {/* here i passed the (props) from app.js */}
 
           <a className="navbar-brand" href="/">
             {props.title}
@@ -55,19 +54,16 @@ export default function Navbar(props) {
         </div>
       </nav>
     </div>
-  )
+  );
 }
 
-// here we add Navbar.proptype bcz if we want to hardcode the datatype of the props then we can through it like bellow
-// if we add (isRequired) then if we dont give the value of the prop then it will give error/warning
 Navbar.propTypes = {
-    title: PropTypes.string.isRequired,
-    about: PropTypes.string.isRequired
-  };
+  title: PropTypes.string.isRequired,
+  about: PropTypes.string.isRequired,
+};
+
 //   default props
-// Specifies the default values for props:
-// it will give a difault value to props is its not innitialized
 Navbar.defaultProps = {
-    title: 'Stranger404',
-    about: 'About TextUtils Default'
-  };
+  title: "Stranger404",
+  about: "About TextUtils Default",
+};

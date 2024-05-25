@@ -2,17 +2,14 @@ import React, { useState } from "react";
 //here by above type we can use the (State) of React
 
 export default function TextForm(props) {
-
   //uppercase
   const handleUpClick = () => {
-    // console.log("UpperCase was Clicked " + text);
     let textUpper = text.toUpperCase();
     setText(textUpper);
   };
 
   //lowercase
   const handleLwClick = () => {
-    // console.log("UpperCase was Clicked " + text);
     let textLower = text.toLowerCase();
     setText(textLower);
   };
@@ -47,14 +44,11 @@ export default function TextForm(props) {
 
   //handle event
   const handleOnchange = (event) => {
-    // console.log("On Change");
     setText(event.target.value);
   };
-  
-  //here like bellow we can rander (State)
+
   const [text, setText] = useState("Enter text here State");
-  //text = "new text" // wrong way to change the state
-  // setText("new text") // right way to change the state
+
   return (
     <div>
       <h1>{props.heading}</h1>
