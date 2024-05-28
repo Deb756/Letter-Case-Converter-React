@@ -1,14 +1,17 @@
 import React, { useState } from "react";
+//here by above type we can use the (State) of React
 
 export default function TextForm(props) {
   //uppercase
   const handleUpClick = () => {
+    // console.log("UpperCase was Clicked " + text);
     let textUpper = text.toUpperCase();
     setText(textUpper);
   };
 
   //lowercase
   const handleLwClick = () => {
+    // console.log("UpperCase was Clicked " + text);
     let textLower = text.toLowerCase();
     setText(textLower);
   };
@@ -36,14 +39,22 @@ export default function TextForm(props) {
       sentences[i] = sentences[i].trim();
 
       // Capitalize the first letter of the sentence
-      sentences[i] =
-        sentences[i].charAt(0).toUpperCase() + sentences[i].slice(1);
+      sentences[i] = sentences[i].charAt(0).toUpperCase() + sentences[i].slice(1);
     }
 
     // Join the sentences back together
     let cap = sentences.join(". ");
     setText(cap);
   }
+
+  //Remove extraSpaces function
+  //here we used javaScript (Rejex)
+  const removeExSpaces = () =>{
+    let newText = text.split(/[ ]+/);
+    setText(newText.join(" "));
+  }
+
+
 
   //Copy text from text area
   function copyText() {
@@ -70,18 +81,40 @@ export default function TextForm(props) {
 
   //handle events on textarea
   const handleOnchange = (event) => {
+    // console.log("On Change");
     setText(event.target.value);
   };
 
+
+  //cwhClass-10
+  //Adding myStyles
+  //its a Js object so the value will be in strings
+  // let myStyle = {
+  //   color:'black',
+  //   backgroundColor:'white'
+  // }
+
+  //by using react state change color
+  // const[myStyle,setMyStyle] = useState({
+  //   color:'black',
+  //   backgroundColor:'white'
+  // })
+  //here after that i can change the color by taking a button and using the (state) there and onclick my state will cahnge according to my input of the state
+  
+
+
+
   //here like bellow we can rander (State)
   const [text, setText] = useState("Enter text here State");
-
+  //text = "new text" // wrong way to change the state
+  // setText("new text") // right way to change the state
   return (
     <>
+      {/* <div className="container" style={myStyle}> */}
       <div className="container">
-        <h1>{props.heading}</h1>
+        <h1 className={`my-3 text-${props.mode === 'light'? 'dark':'light'}`}>{props.heading}</h1>
         <div className="">
-          <label htmlFor="exampleFormControlTextarea1" className="form-label">
+          <label htmlFor="exampleFormControlTextarea1" className={`form-label text-${props.mode === 'light'? 'dark':'light'}`}>
             Example textarea
           </label>
           <textarea
@@ -110,6 +143,12 @@ export default function TextForm(props) {
         >
           Capitalize Sentence
         </button>
+        <button
+          className="btn btn-primary my-3 mx-1"
+          onClick={removeExSpaces}
+        >
+          Remove ExtraSpaces
+        </button>
         <button className="btn btn-primary my-3 mx-1" onClick={copyText}>
           Copy Text
         </button>
@@ -125,10 +164,9 @@ export default function TextForm(props) {
           <p>
             <b>{text.length}</b> Charecter and <b>{text.split(" ").length}</b>{" "}
             Words
-            <p>
+            <br />
               It will take <b>{0.008 * text.split(" ").length}</b> Minutes to
               read the whole paragraph
-            </p>
           </p>
         </div>
         <div className="p-3 text-primary-emphasis bg-primary-subtle border border-primary-subtle rounded-1 m-2">
