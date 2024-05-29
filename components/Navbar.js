@@ -61,6 +61,7 @@ export default function Navbar(props) {
   );
 }
 
+
 // here we add Navbar.proptype bcz if we want to hardcode the datatype of the props then we can through it like bellow
 // if we add (isRequired) then if we dont give the value of the prop then it will give error/warning
 Navbar.propTypes = {

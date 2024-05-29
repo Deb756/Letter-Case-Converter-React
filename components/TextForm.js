@@ -7,6 +7,7 @@ export default function TextForm(props) {
     // console.log("UpperCase was Clicked " + text);
     let textUpper = text.toUpperCase();
     setText(textUpper);
+    props.showAlert("UpperCase Converted","success");
   };
 
   //lowercase
@@ -14,6 +15,7 @@ export default function TextForm(props) {
     // console.log("UpperCase was Clicked " + text);
     let textLower = text.toLowerCase();
     setText(textLower);
+    props.showAlert("LowerCase Converted","success");
   };
 
   //making first latter capitalize
@@ -26,6 +28,7 @@ export default function TextForm(props) {
 
     let newWord = capWord.join(" ");
     setText(newWord);
+    props.showAlert("Cap First latter Converted","success");
   }
 
   //Capitalize Sentence here
@@ -45,6 +48,7 @@ export default function TextForm(props) {
     // Join the sentences back together
     let cap = sentences.join(". ");
     setText(cap);
+    props.showAlert("Sentence First Charector Capitalized","success");
   }
 
   //Remove extraSpaces function
@@ -52,6 +56,7 @@ export default function TextForm(props) {
   const removeExSpaces = () =>{
     let newText = text.split(/[ ]+/);
     setText(newText.join(" "));
+    props.showAlert("Sentence Extra Spaces Removed","success");
   }
 
 
@@ -67,9 +72,13 @@ export default function TextForm(props) {
 
     // Copy the text
     document.execCommand("copy");
+    props.showAlert("Text Copied To Clipboard","success");
 
     // Optionally, you can alert the user that the text has been copied
-    alert("Text copied to clipboard");
+    // alert("Text copied to clipboard");
+//     <div class="alert alert-primary" role="alert">
+//   Text copied to clipboard
+// </div>
   }
 
   //clear Function of TextArea
@@ -77,6 +86,7 @@ export default function TextForm(props) {
     var textarea = document.getElementById("exampleFormControlTextarea1");
     let clrTxt = (textarea.value = "");
     setText(clrTxt);
+    props.showAlert("Board Cleard","success");
   }
 
   //handle events on textarea
