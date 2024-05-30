@@ -172,7 +172,7 @@ export default function TextForm(props) {
             <u>Word Count / Charecter Count</u>
           </h3>
           <p>
-            <b>{text.length}</b> Charecter and <b>{text.split(" ").length}</b>{" "}
+            <b>{text.length}</b> Charecter and <b>{text.trim() === ''? 0:text.split(" ").length}</b>{" "}
             Words
             <br />
               It will take <b>{0.008 * text.split(" ").length}</b> Minutes to
